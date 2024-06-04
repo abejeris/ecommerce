@@ -1,8 +1,9 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
 	res.send(`
@@ -18,13 +19,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-	const formData = {
-		email: req.body.email,
-		password: req.body.password,
-		passwordConfirmation: req.body.passwordConfirmation,
-	};
-	console.log(formData);
-
+	console.log(req.body);
 	res.send('Account created');
 });
 
